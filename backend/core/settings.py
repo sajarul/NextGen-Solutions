@@ -27,7 +27,11 @@ def env_list(name: str, default: Optional[List[str]] = None) -> List[str]:
 
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "django-insecure-dev-key-change-me")
 DEBUG = env_bool("DJANGO_DEBUG", True)
-ALLOWED_HOSTS = env_list("DJANGO_ALLOWED_HOSTS", ["localhost", "127.0.0.1"])
+ALLOWED_HOSTS = [
+    "localhost",
+    "127.0.0.1",
+    "nextgen-solutions.onrender.com",
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
