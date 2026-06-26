@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #04060d;
+  --bg-soft: #0c101a;
+  --text: #f8fafc;
+  --text-muted: #a4adb9;
+  --panel: rgba(12, 16, 26, 0.74);
+  --stroke: rgba(255, 255, 255, 0.1);
+  --brand: #9fcb5c;
+  --brand-2: #6ee7ff;
+  --danger: #fb7185;
+  --outline-stroke: rgba(255, 255, 255, 0.42);
+}
+
+html.light {
+  --bg: #f6f8fc;
+  --bg-soft: #ffffff;
+  --text: #111827;
+  --text-muted: #4b5563;
+  --panel: rgba(255, 255, 255, 0.72);
+  --stroke: rgba(15, 23, 42, 0.12);
+  --brand: #7da343;
+  --brand-2: #2563eb;
+  --danger: #e11d48;
+  --outline-stroke: rgba(15, 23, 42, 0.32);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+  background-image: radial-gradient(circle at 12% 10%, rgba(159, 203, 92, 0.16), transparent 30%),
+    radial-gradient(circle at 90% 0%, rgba(56, 189, 248, 0.13), transparent 34%),
+    linear-gradient(160deg, #04060d 0%, #080b14 52%, #03050a 100%);
+  background-attachment: fixed;
+}
+
+html.light body {
+  background-image: radial-gradient(circle at 10% 10%, rgba(159, 203, 92, 0.16), transparent 30%),
+    radial-gradient(circle at 90% 5%, rgba(37, 99, 235, 0.11), transparent 36%),
+    linear-gradient(160deg, #f7f9fe 0%, #eff3fb 55%, #f9fbff 100%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: rgba(159, 203, 92, 0.35);
+  color: #fff;
+}
+
+.glass-panel {
+  background: var(--panel);
+  border: 1px solid var(--stroke);
+  backdrop-filter: blur(12px);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.08;
+  background-image: linear-gradient(to right, #fff 1px, transparent 1px),
+    linear-gradient(to bottom, #fff 1px, transparent 1px);
+  background-size: 44px 44px;
+  z-index: -1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.cursor-enabled,
+  body.cursor-enabled * {
+    cursor: none !important;
+  }
+}
+
+input,
+textarea,
+select {
+  color: var(--text);
+}
+
+@media (max-width: 640px) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: color-mix(in srgb, var(--text-muted) 92%, transparent);
+}
+
+.gradient-heading {
+  background: linear-gradient(95deg, var(--brand), var(--brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.stroke-hero {
+  color: transparent;
+  -webkit-text-stroke: 1.8px #ffffff;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
+}
+
+.outline-heading {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--outline-stroke);
+}
+
+.section-anchor {
+  scroll-margin-top: 88px;
+}
+
+.fade-mask {
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+@media (min-width: 1024px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .themed-scroll > section {
+    scroll-snap-align: start;
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeMove 28s linear infinite;
+}
+
+.marquee-reverse {
+  animation-direction: reverse;
+}
+
+.marquee-item {
+  padding-right: 2.4rem;
+  font-family: var(--font-poppins), sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.9rem);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+}
+
+.portfolio-rail {
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(159, 203, 92, 0.45) rgba(255, 255, 255, 0.08);
+}
+
+.portfolio-rail > * {
+  scroll-snap-align: start;
+}
+
+.portfolio-rail::-webkit-scrollbar {
+  height: 9px;
+}
+
+.portfolio-rail::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+}
+
+.portfolio-rail::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, rgba(159, 203, 92, 0.85), rgba(110, 231, 255, 0.8));
+  border-radius: 999px;
+}
+
+@keyframes marqueeMove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+  }
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <body style="font-family: Arial, sans-serif; color: #101827; line-height: 1.5;">
+    <h2 style="margin-bottom: 12px;">New Paid Order Received</h2>
+    <p>A customer completed payment for your design service plan.</p>
+
+    <table cellpadding="6" cellspacing="0" style="border-collapse: collapse; width: 100%; max-width: 620px;">
+      <tr>
+        <td style="border: 1px solid #e5e7eb;"><strong>Order ID</strong></td>
+        <td style="border: 1px solid #e5e7eb;">{{ order.id }}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #e5e7eb;"><strong>Plan</strong></td>
+        <td style="border: 1px solid #e5e7eb;">{{ order.plan_name }}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #e5e7eb;"><strong>Amount</strong></td>
+        <td style="border: 1px solid #e5e7eb;">₹{{ amount_rupees }} {{ order.currency }}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #e5e7eb;"><strong>Customer Name</strong></td>
+        <td style="border: 1px solid #e5e7eb;">{{ order.customer_name }}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #e5e7eb;"><strong>Email</strong></td>
+        <td style="border: 1px solid #e5e7eb;">{{ order.customer_email }}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #e5e7eb;"><strong>Phone</strong></td>
+        <td style="border: 1px solid #e5e7eb;">{{ order.customer_phone }}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #e5e7eb;"><strong>Payment ID</strong></td>
+        <td style="border: 1px solid #e5e7eb;">{{ order.provider_payment_id }}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #e5e7eb;"><strong>Project Details</strong></td>
+        <td style="border: 1px solid #e5e7eb;">{{ order.project_details|default:"N/A" }}</td>
+      </tr>
+      <tr>
+        <td style="border: 1px solid #e5e7eb;"><strong>Paid At</strong></td>
+        <td style="border: 1px solid #e5e7eb;">{{ order.paid_at }}</td>
+      </tr>
+    </table>
+
+    <p style="margin-top: 16px;">Action: Contact this customer within 1 hour for service onboarding.</p>
+  </body>
+</html>

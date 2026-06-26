@@ -1,0 +1,18 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: nextgen_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: nextgen_db
+      POSTGRES_USER: nextgen_user
+      POSTGRES_PASSWORD: nextgen_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - nextgen_pgdata:/var/lib/postgresql/data
+
+volumes:
+  nextgen_pgdata:
